@@ -11,16 +11,15 @@
   "EMAIL": "your email",
   "PASSWORD": "your password",
   "OTPKEY": "",
-  "BOTNAME": "─꯭─⃝‌‌𝐒𝐡𝐚𝐡𝐚𝐝𝐚𝐭 𝐂𝐡𝐚𝐭 𝐁𝐨𝐭",
+  
+  "BOTNAME": "─꯭⃝﷽ 𝐇𝐚𝐲𝐝𝐚𝐫 𝐈𝐬𝐥𝐚𝐦𝐢𝐜 𝐁𝐨𝐭 ﷻ",
   "PREFIX": "/",
   "reactUnsend": ["😡", "🤧", "😤", "😠"],
 
   "ADMINBOT": [
-    "100001039692046",
-    "100001039692046",
-    "100001039692046"
+    "61574852348410"
   ],
-  "NDH": ["100001039692046"],
+  "NDH": ["61574852348410"],
   "adminOnly": false,
   "ndhOnly": false,
   "adminPaOnly": false,
