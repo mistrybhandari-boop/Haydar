@@ -1,26 +1,48 @@
 name: Node.js CI
 
 on:
-  workflow_dispatch:
-  
+  push:
+    branches: [main]
+  pull_request:
+    branches: [main]
 
 jobs:
   build:
-
-
     runs-on: ubuntu-latest
 
     strategy:
       matrix:
-        node-version: [16.x]
-        # See supported Node.js release schedule at https://nodejs.org/en/about/releases/
+        node-version: [20.x]
 
     steps:
-    - uses: actions/checkout@v2
-    - name: Use Node.js ${{ matrix.node-version }}
-      uses: actions/setup-node@v2
-      with:
-        node-version: ${{ matrix.node-version }}
-        cache: 'npm'
-    - run: npm install
-    - run: npm start
+      # Checkout repository
+      - name: Checkout repository
+        uses: actions/checkout@v4
+
+      # Setup Node.js
+      - name: Use Node.js ${{ matrix.node-version }}
+        uses: actions/setup-node@v4
+        with:
+          node-version: ${{ matrix.node-version }}
+          cache: "npm"
+
+      # Install dependencies
+      - name: Install dependencies
+        run: npm install
+
+      # Optional: Build your project (if needed)
+      - name: Build project
+        run: |
+          if [ -f package.json ] && jq -e '.scripts.build' package.json > /dev/null 2>&1; then
+            npm run build
+          else
+            echo "No build script found, skipping build step."
+          fi
+
+      # Start the bot (CI test run only)
+      - name: Start the bot
+        env:
+          PORT: 8080
+        run: |
+          echo "Bot starting..."
+          npm start
